@@ -1,27 +1,33 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class DisplayQuestions : MonoBehaviour 
 {
 
+    /*
+    * This is the DisplayQuestions script.
+    *
+    * RESPONSIBILITY: Display the question panel/text when needed.
+    */
 
-    [SerializeField]
-    private StringCounter _stringCounterScript;
+    [SerializeField] private StringCounter _stringCounterScript;
+    [SerializeField] private TriggerQuestion _triggerQuestionScript;
+    [SerializeField] private QuestionStrings _questionStringsScript;
+    
+    // Grabs the needed scripts to achieve this.
+    
+    [SerializeField] private GameObject _questionPanelObject;
+    
+    // The background panel we will use for our text.
 
-    [SerializeField]
-    private TriggerQuestion _triggerQuestionScript;
+    [SerializeField] private Text[] questionText;
 
-    [SerializeField]
-    private GameObject _questionPanelObject;
-
-    [SerializeField]
-    private QuestionStrings _questionStringsObject;
-
-    [SerializeField]
-    private Text[] questionText;
-
+    // The text object we will be using four our strings.
+    
     private bool _turnDisplayOff;
+    
+    // This boolean will decide whether the questions will be displayed, or not.
 
     void Start()
     {
@@ -34,6 +40,11 @@ public class DisplayQuestions : MonoBehaviour
         _triggerQuestionScript.OnQuestionChosen += RemoveQuestionText;
 
         _triggerQuestionScript.OnQuestionChosen += TurnDisplayOff;
+        
+        /*
+        * These are delegates.
+        * All these functions will only be called whenever the delegate takes place.
+        */
     }
 
     void DisplayPanel()
@@ -65,6 +76,8 @@ public class DisplayQuestions : MonoBehaviour
     {
         questionText[0].text = "";
         questionText[1].text = "";
+        
+        // Empties the text.
     }
 
 }

@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class ResetText : MonoBehaviour {
+public class ResetText : MonoBehaviour 
+{
+    
+    /*
+     * RESPONSIBILITY: Replace the last string of the text with an empty string, whenever the text ends.
+     */
 
-    [SerializeField]
-    private StringCounter _stringCounterScript;
+    [SerializeField] private StringCounter _stringCounterScript;
 
-    [SerializeField]
-    private Text _dialogueText;
+    [SerializeField] private Text _dialogueText;
 
     void Start()
     {

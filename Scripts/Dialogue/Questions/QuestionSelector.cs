@@ -1,22 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class QuestionSelector : MonoBehaviour {
+public class QuestionSelector : MonoBehaviour 
+{
+    
+    /*
+    * This is the QuestionSelector script.
+    *
+    * RESPONSIBILITY: Turn the selected question RED.
+    */
 
-    [SerializeField]
-    private StringCounter _stringCounterScript;
+    [SerializeField] private StringCounter _stringCounterScript;
 
-    [SerializeField]
-    private Text[] _questionTexts;
+    [SerializeField] private Text[] _questionTexts;
 
-    [SerializeField]
-    private Color _questionNeutralColor;
-    [SerializeField]
-    private Color _questionHoverColor;
+    [SerializeField] private Color _questionNeutralColor;
+    [SerializeField] private Color _questionHoverColor;
 
-    [SerializeField]
-    private int _questionInt = 0;
+    [SerializeField] private int _questionInt = 0;
 
     public int GetQuestionInt
     {
@@ -24,7 +26,6 @@ public class QuestionSelector : MonoBehaviour {
     }
 
     private bool _canSelect;
-
     private bool _runOnce;
 
     void Start()
@@ -34,8 +35,11 @@ public class QuestionSelector : MonoBehaviour {
 
     void Update()
     {
-        
-
+        CheckSelector();
+    }
+    
+    void CheckSelector()
+    {
         if (_canSelect)
         {
             if (Input.GetAxis("Vertical") < 0)

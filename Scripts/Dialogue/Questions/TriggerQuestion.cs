@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TriggerQuestion : MonoBehaviour 
 {
 
+    /*
+     * RESPONSIBILITIES:
+     * 1. Make a boolean turn true whenever the player gets in range of the NPC.
+     * 2. Whenever you press 'Space' in range of the NPC, the dialogue starts playing.
+     */
+    
     public delegate void QuestionEventHandler();
     public QuestionEventHandler OnQuestionChosen;
 
@@ -45,6 +51,8 @@ public class TriggerQuestion : MonoBehaviour
 
         _animateTextScript.OnAnimatingText += SetRunningBool;
         _animateTextScript.OnDoneAnimatingText += SetRunningBoolFalse;
+        
+         // These functions will only get called whenever the delegates in these scripts gets fired.
     }
 
 
@@ -126,6 +134,10 @@ public class TriggerQuestion : MonoBehaviour
     }
 
 
+    /*
+     * These OnTrigger2D Methods are to ensure that the text only runs
+     * Whenever the player is in range of the NPC they're talking to.
+     */
 
     void OnTriggerStay2D(Collider2D coll)
     {

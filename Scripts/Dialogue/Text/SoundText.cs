@@ -1,16 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class SoundText : MonoBehaviour {
+public class SoundText : MonoBehaviour 
+{
+    /*
+     * RESPONSIBILITY: Play an audio source whenver a delegate gets fired.
+     */
 
-    [SerializeField]
-    private AudioSource _textSound;
-
-    [SerializeField]
-    private AnimateText _animateText;
-
-    [SerializeField]
-    private bool _playSoundWhilePlaying;
+    [SerializeField] private AnimateText _animateText;
+    [SerializeField] private AudioSource _textSound;
+    [SerializeField] private bool _playSoundWhilePlaying;
 
     void Start()
     {

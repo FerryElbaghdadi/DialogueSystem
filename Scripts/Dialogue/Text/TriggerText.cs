@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class TriggerText : MonoBehaviour 
 {
+    
+    /*
+     * RESPONSIBILITIES:
+     * 1. Make a boolean turn true whenever the player gets in range of the NPC.
+     * 2. Whenever you press 'Space' in range of the NPC, the dialogue starts playing.
+     */
 
     [SerializeField] private StringCounter _stringCounterScript;
     [SerializeField] private AnimateText _animateText;
@@ -26,6 +32,8 @@ public class TriggerText : MonoBehaviour
         _animateText.OnDoneAnimatingText += SetRunningBoolFalse;
 
         _stringCounterScript.OnStringsEnd += SetTextOff;
+        
+        // These functions will only get called whenever the delegates in the scripts get fired.
     }
 
     void SetRunningBool()

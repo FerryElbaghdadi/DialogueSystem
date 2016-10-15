@@ -1,17 +1,31 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class StringCounter : MonoBehaviour 
 {
+    
+    /*
+     * This script holds an integer that starts at 0, 
+     * and counts up whenever a sentence ends.
+     * this way, whenever we continue the dialogue,
+     * the counter counts up, and we will know which sentence to display
+     * in the array of strings (of text) that will be displayed.
+     * 
+     * RESPONSIBILITIES: 
+     * 1. Count an integer up whenever a sentence ends.
+     * 2. Reset the counter whenever the text ends. 
+     */
+    
+    
     public delegate void QuestionEventHandler();
     public QuestionEventHandler OnStringsEnd;
     public QuestionEventHandler OnQuestionsEnd;
 
-    [SerializeField] private AnimateText _animateText;
+    [SerializeField] private AnimateText _animateTextScript;
+    
+    [SerializeField] private StringsHolder _stringsHolderScript;
 
-    [SerializeField] private StringsHolder _stringsHolder;
-
-    [SerializeField] private QuestionStrings _questionStrings;
+    [SerializeField] private QuestionStrings _questionStringsScript;
     [SerializeField] private TriggerQuestion _triggerQuestionScript;
 
     [SerializeField] private int _stringCounter;
@@ -29,12 +43,19 @@ public class StringCounter : MonoBehaviour
 
     void Start()
     {
-        _animateText.OnDoneAnimatingText += AddCount;
+        _animateTextScript.OnDoneAnimatingText += AddCount;
+        
+        // This function will only get called whenever the delegate in the AnimateText gets fired.
     }
 
     void AddCount()
     {
-        if (_stringCounter < _stringsHolder.GetAllDialogueStrings.Length - 1)
+        /*
+         * IF: Stands for whenever a sentence ends. The counter counts up.
+         * ELSE: Stands for whenever the text ends. The counter resets, and a delegate gets fired.
+         */
+        
+        if (_stringCounter < _stringsHolderScript.GetAllDialogueStrings.Length - 1)
         _stringCounter += 1;
         else
         {
@@ -46,7 +67,7 @@ public class StringCounter : MonoBehaviour
 
         if(_triggerQuestionScript.GetQuestionOne)
         {
-            if (_questionCounter < _questionStrings.GetAnswerOneStrings.Length - 1)
+            if (_questionCounter < _questionStringsScript.GetAnswerOneStrings.Length - 1)
                 _questionCounter += 1;
             else
             {
@@ -59,7 +80,7 @@ public class StringCounter : MonoBehaviour
 
         else if (_triggerQuestionScript.GetQuestionTwo)
         {
-            if (_questionCounter < _questionStrings.GetAnswerTwoStrings.Length - 1)
+            if (_questionCounter < _questionStringsScript.GetAnswerTwoStrings.Length - 1)
                 _questionCounter += 1;
             else
             {

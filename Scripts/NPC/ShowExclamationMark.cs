@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ShowExclamationMark : MonoBehaviour
 {
+    
+    /*
+     * RESPONSIBILITY: Show an exclamation mark above the NPC whenever the player gets in range.
+     */
 
-    [SerializeField]
-    private GameObject _exclamationMark;
-
-    [SerializeField]
-    private NPCDetector _npcDetector;
+    [SerializeField] private GameObject _exclamationMark;
 
     void Start()
     {
