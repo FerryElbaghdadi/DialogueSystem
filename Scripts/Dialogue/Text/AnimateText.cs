@@ -13,16 +13,16 @@ public class AnimateText : MonoBehaviour
      * RESPONSIBILITY: Animate a string per character.
      */
 
-    public delegate void AnimateTextEventHandler();
-    public AnimateTextEventHandler OnAnimatingText;
-    public AnimateTextEventHandler OnDoneAnimatingText;
-
     private string str;
 
     public string GetAnimatedString
     {
         get { return str; }
     }
+    
+    public delegate void AnimateTextEventHandler();
+    public AnimateTextEventHandler OnAnimatingText;
+    public AnimateTextEventHandler OnDoneAnimatingText;
 
     public IEnumerator TextAnimator(string strComplete, float txtSpeed, float delayText)
     {
